@@ -107,6 +107,7 @@ export default function Home() {
                             type="text"
                             label="Account"
                             name="account"
+                            className={classes.root}
                             fullWidth
                             required
                         />
