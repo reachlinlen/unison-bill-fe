@@ -3,6 +3,8 @@ import { Input, Button, TextField, makeStyles } from "@material-ui/core";
 import Axios from "axios";
 import { URL } from "../../constants";
 import { Autocomplete } from "@material-ui/lab";
+import AssignmentIcon from '@material-ui/icons/Assignment';
+import ShowIcon from "../../utilities/ShowIcon";
 
 const CLIENTS = [
     'Standard Chartered Bank',
@@ -28,6 +30,9 @@ const useStyles = makeStyles((theme) => ({
         '&.MuiInputBase-root.MuiInput-underline:hover:not(.Mui-disabled):before': {
             borderBottom: '2px solid #3f51b5',
         },
+    },
+    handleAssIconClick: {
+
     }
 }))
 
@@ -72,6 +77,7 @@ export default function Home() {
 
     return (
         <div className="mt-8 mx-auto max-w-md border-solid border-gray-600 border-2 p-4 rounded-lg">
+            <ShowIcon renderIcon={<AssignmentIcon color="primary" />} hist="/bills" />
             <p className="text-center mt-2 text-2xl">Welcome to Unison!!!</p>
             <div className="mt-4 mx-auto max-w-sm">
                 <form onSubmit={handleUpload}>
@@ -161,5 +167,9 @@ export default function Home() {
         ele.setAttribute('download', `${fileName}.pdf`)
         document.body.appendChild(ele)
         ele.dispatchEvent(new MouseEvent('click'))
+    }
+
+    function handleAssIconClick() {
+
     }
 }

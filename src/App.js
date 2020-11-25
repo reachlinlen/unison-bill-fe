@@ -1,9 +1,28 @@
 import './App.css';
 import Home from './Pages/Home';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import BillDetails from './Pages/BillDetails';
 
 function App() {
   return (
-    <Home />
+    <Router>
+      <Switch>
+        <Route path="/generatebill">
+          <Home />
+        </Route>
+        <Route path="/bills">
+          <BillDetails />
+        </Route>
+        <Route path="/">
+          <Home />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
