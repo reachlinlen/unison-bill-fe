@@ -151,13 +151,11 @@ export default function Home() {
 
     function createPDF(data, fileName) {
         const ele = document.createElement('a')
+        ele.style = "display: none"
         ele.href = window.URL.createObjectURL(new Blob([data]))
-        ele.setAttribute('download', `${fileName}.pdf`)
+        ele.setAttribute('download', `${fileName}.zip`);
         document.body.appendChild(ele)
         ele.dispatchEvent(new MouseEvent('click'))
-    }
-
-    function handleAssIconClick() {
-
+        document.body.removeChild(ele)
     }
 }
