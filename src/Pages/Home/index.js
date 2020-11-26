@@ -1,16 +1,10 @@
 import React from "react"
 import { Input, Button, TextField, makeStyles } from "@material-ui/core";
 import Axios from "axios";
-import { URL } from "../../constants";
+import { CLIENTS, URL } from "../../constants";
 import { Autocomplete } from "@material-ui/lab";
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import ShowIcon from "../../utilities/ShowIcon";
-
-const CLIENTS = [
-    'Standard Chartered Bank',
-    'DBS',
-    'OCBC'
-]
 
 const useStyles = makeStyles((theme) => ({
     label: {
@@ -50,11 +44,7 @@ export default function Home() {
             formParams.costCentre !== '' && formParams.file.name !== '' &&
             formParams.PONum !== '' && formParams.clients) {
             fileData.append('file', formParams.file, formParams.file.name)
-            fileData.append('attention', formParams['attention'])
-            fileData.append('PONum', formParams['PONum'])
             fileData.append('projName', formParams['projName'])
-            fileData.append('costCentre', formParams['costCentre'])
-            fileData.append('account', formParams['account'])
             fileData.append('clients', formParams['clients'])
             let config = {
                 headers: {
@@ -66,10 +56,8 @@ export default function Home() {
             Axios.put(`${URL.API}/emp`, fileData, config)
                     .then(res => {
                         createPDF(res.data, "unison")
-                        // console.log('@ res')
                     })
                     .catch(e => {
-                        // debugger
                         console.log({e})
                     })
         }
@@ -81,7 +69,7 @@ export default function Home() {
             <p className="text-center mt-2 text-2xl">Welcome to Unison!!!</p>
             <div className="mt-4 mx-auto max-w-sm">
                 <form onSubmit={handleUpload}>
-                    <TextField
+                    {/* <TextField
                         type="text"
                         label="Attention"
                         name="attention"
@@ -98,7 +86,7 @@ export default function Home() {
                             required
                             fullWidth
                         />
-                    </div>
+                    </div> */}
                     <div className="mt-2">
                         <TextField
                             type="text"
@@ -108,7 +96,7 @@ export default function Home() {
                             fullWidth
                         />
                     </div>
-                    <div className="mt-2">
+                    {/* <div className="mt-2">
                         <TextField
                             type="text"
                             label="Account"
@@ -127,7 +115,7 @@ export default function Home() {
                             fullWidth
                             required
                         />
-                    </div>
+                    </div> */}
                     <div className="mt-4">
                         <Autocomplete
                             options={CLIENTS}

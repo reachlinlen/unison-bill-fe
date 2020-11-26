@@ -3,3 +3,10 @@ export const URL = {
 };
 
 export const BILL_STATUS = [ 'PENDING', 'PAID', 'CANCELLED'];
+
+export const CLIENTS = [
+    'Standard Chartered Bank',
+    'DBS',
+    'OCBC',
+    'UOB'
+];
