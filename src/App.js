@@ -1,16 +1,16 @@
 import './App.css';
 import Home from './Pages/Home';
 import {
-  BrowserRouter as Router,
+  // BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  HashRouter as Router,
 } from "react-router-dom";
 import BillDetails from './Pages/BillDetails';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/">
       <Switch>
         <Route path="/generatebill">
           <Home />
